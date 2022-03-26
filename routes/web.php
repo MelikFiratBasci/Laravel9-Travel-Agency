@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,8 +13,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// 1- write in route
+Route::get('/hello', function () {
+    return 'hello World';
+});
 
-Route::get('/', function () {
+// 2=call controller function
+Route::get('/home',[HomeController::class,'index'])->name('home');
+
+Route::get('/',function (){
+    return view('home.index');
+});
+
+//3= route-> controller->view
+Route::get('/test',[HomeController::class,'test'])->name('test');
+
+//4- route with parameters
+Route::get('/param/{id}/{nmbr}',[HomeController::class,'param'])->name('param');
+
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
