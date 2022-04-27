@@ -1,3 +1,4 @@
+<!-- Footer Start -->
 <div class="footer">
     <div class="container-fluid">
         <div class="row">
@@ -54,17 +55,46 @@
             <div class="col-md-6">
                 <div class="payment-method">
                     <h2>We Accept:</h2>
-                    {{asset('assets')}}/img/payment-method.png" alt="Payment Method" />
+                    <img src="{{asset('assets')}}/img/payment-method.png" alt="Payment Method" />
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="payment-security">
                     <h2>Secured By:</h2>
-                    {{asset('assets')}}/img/godaddy.svg" alt="Payment Security" />
-                    {{asset('assets')}}/img/norton.svg" alt="Payment Security" />
-                    {{asset('assets')}}/img/ssl.svg" alt="Payment Security" />
+                    <img src="{{asset('assets')}}/img/godaddy.svg" alt="Payment Security" />
+                    <img src="{{asset('assets')}}/img/norton.svg" alt="Payment Security" />
+                    <img src="{{asset('assets')}}/img/ssl.svg" alt="Payment Security" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Footer End -->
+
+<!-- Footer Bottom Start -->
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 copyright">
+                <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
+            </div>
+
+            <div class="col-md-6 template-by">
+                <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Bottom End -->
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('assets')}}/lib/easing/easing.min.js"></script>
+<script src="{{asset('assets')}}/lib/slick/slick.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="{{asset('assets')}}/js/main.js"></script>

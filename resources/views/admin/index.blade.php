@@ -1,5 +1,6 @@
 @extends('layouts.admin')
-@section('title','Admin panel home page')
+@section('title','Admin Panel Home Page')
+@section('keywords','otel,gezi,sinirsiz eglence')
 @section('content')
     @include('admin._content')
 @endsection

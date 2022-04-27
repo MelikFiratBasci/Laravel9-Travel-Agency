@@ -18,7 +18,7 @@ Route::get('/hello', function () {
     return 'hello World';
 });
 
-Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminhome');
+Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminHome');
 // 2=call controller function
 Route::get('/home',[HomeController::class,'index'])->name('home');
 
