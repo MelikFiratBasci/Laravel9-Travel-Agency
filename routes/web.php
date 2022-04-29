@@ -17,8 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/hello', function () {
     return 'hello World';
 });
-
+//admin
 Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminHome');
+
+
+//login
+Route::get('/admin/login',[HomeController::class,'login'])->name('admin_login');
+
+
+Route::post('/admin/logincheck',[HomeController::class,'logincheck'])->name('admin_logincheck');
+
+
 // 2=call controller function
 Route::get('/home',[HomeController::class,'index'])->name('home');
 
@@ -26,16 +35,8 @@ Route::get('/',function (){
     return view('home.index');
 });
 
-//3= route-> controller->view
-Route::get('/test',[HomeController::class,'test'])->name('test');
-
-//4- route with parameters
-Route::get('/param/{id}/{nmbr}',[HomeController::class,'param'])->name('param');
 
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
