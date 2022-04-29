@@ -14,17 +14,18 @@ class HomeController extends Controller
     }
     //login check
     public function logincheck(Request $request){
-        if($request->isMethod('post')){
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
-            {
-                // echo "Login ok ";
-                return redirect('/admin');
-            } else {
-                //echo "Error login ";
-                return redirect('/admin/login')->with('message','Hatalı Email yada Şifre');
-            }
-        }
+        if($request->isMethod('post')) {
+            $credentials = $request->only('email','password');
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
 
+                return redirect()->intended('admin');
+            }
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ]);
+
+        }
         else{
             return view('admin.login');
         }
