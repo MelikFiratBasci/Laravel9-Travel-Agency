@@ -31,18 +31,31 @@
                         </div>
                         <h4>Hello! let's get started</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
-
-
+                        @if($message = Session::get('error'))
+                        <div class="alert alert-danger alert-block">
+                            <button type ="button" class="close" data-dismiss="alert">x</button>
+                            <strong>{{$message}}</strong>
+                        </div>
+                        @endif
+                        @if(count($errors)>0)
+                            <div class ="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{route('admin_logincheck')}}" method="post" class="pt-3">
                             @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg" id="email" placeholder="Username" required>
+                                <input type="email" id="email" name="email" class="form-control form-control-lg"  placeholder="Username" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
+                                <input type="password" id="password" name="password" class="form-control form-control-lg"  placeholder="Password" >
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                                <button type="submit" name="login" value="login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                             </div>
                             <div class="my-2 d-flex justify-content-between align-items-center">
                                 <div class="form-check">

@@ -14,25 +14,28 @@ class HomeController extends Controller
     }
     //login check
     public function logincheck(Request $request){
-        if($request->isMethod('post')){
-            $credentials = $request->only('email','password');
-            if (Auth::attempt($credentials)){
-                $request->session()->regenerate();
-                return redirect()->intended('admin');
-            }
-            return back()->withErrors([
-                'email'=>'the provided credentials do not match our records',
-            ]);
-        }
+       if($request->isMethod('post')) {
+           $credentials = $request->only('email','password');
+           if (Auth::attempt($credentials)) {
+               $request->session()->regenerate();
+
+               return redirect()->intended('admin');
+           }else{
+
+           return back()->withErrors([
+               'email' => 'The provided credentials do not match our records.',
+           ]);
+           }
+       }
         else{
             return view('admin.login');
         }
+
+
     }
 
 
-    public function  index(){
-        echo "Index function";
-    }
+
     public function test (){
         return view('home.test');
     }
