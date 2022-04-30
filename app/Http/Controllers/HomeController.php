@@ -12,6 +12,11 @@ class HomeController extends Controller
     public function login(){
         return view('admin.login');
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/')->with('message','Kullanıcı çıkış yaptı');
+    }
     //login check
     public function logincheck(Request $request){
         if($request->isMethod('post')) {

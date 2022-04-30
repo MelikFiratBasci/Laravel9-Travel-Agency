@@ -46,7 +46,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{route('admin_logincheck')}}" method="post" class="pt-3">
+                        <form action="{{route('admin.logincheck')}}" method="post" class="pt-3">
                             @csrf
                             <div class="form-group">
                                 <input type="email" id="email" name="email" class="form-control form-control-lg"  placeholder="Username" required>

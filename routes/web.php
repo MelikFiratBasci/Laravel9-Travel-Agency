@@ -18,15 +18,15 @@ Route::get('/hello', function () {
     return 'hello World';
 });
 //admin
-Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminHome');
+Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminHome')->middleware('auth');
 
 
 //login
-Route::get('/admin/login',[HomeController::class,'login'])->name('admin_login');
+Route::get('/admin/login',[HomeController::class,'login'])->name('admin.login');
 
 
-Route::post('/admin/logincheck',[HomeController::class,'logincheck'])->name('admin_logincheck');
-
+Route::post('/admin/logincheck',[HomeController::class,'logincheck'])->name('admin.logincheck');
+Route::get('/admin/logout',[HomeController::class,'logout'])->name('admin.logout');
 
 // 2=call controller function
 Route::get('/home',[HomeController::class,'index'])->name('home');
