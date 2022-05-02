@@ -649,6 +649,11 @@
         </div>
     </div>
     <!-- content-wrapper ends -->
-   @include('admin._footer')
-
+    <!-- partial -->
+</div>
+<!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
 

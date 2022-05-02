@@ -5,13 +5,7 @@
         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
     </div>
 </footer>
-<!-- partial -->
-</div>
-<!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+
 
 <!-- plugins:js -->
 <script src="{{asset('assets')}}/admin/adminvendors/js/vendor.bundle.base.js"></script>
@@ -35,7 +29,4 @@
 <script src="{{asset('assets')}}/admin/adminjs/Chart.roundedBarCharts.js"></script>
 @yield('footer')
 <!-- End custom js for this page-->
-</div>
-<!-- main-panel ends -->
-
 
