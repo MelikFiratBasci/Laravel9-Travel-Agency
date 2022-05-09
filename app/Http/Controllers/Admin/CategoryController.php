@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin._category');
+        $datalist = DB::select('select * from categories');
+//        print_r($datalist);
+//        exit();
+        return view('admin._category',['datalist'=>$datalist]);
     }
 
     /**
