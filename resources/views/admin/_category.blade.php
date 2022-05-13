@@ -23,7 +23,8 @@
                                     <tr>
                                         <th>id</th>
                                         <th>title</th>
-                                        <th>Created</th>
+                                        <th>Status</th>
+                                        <th>Parent</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
@@ -38,10 +39,14 @@
                                                 <p>{{$rs->title}}</p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->created_at}}</p>
+                                                <p>{{$rs->status}}</p>
                                             </td>
                                             <td>
-                                                <label class="badge badge-warning badge-outline-danger"><a
+                                                <p>{{$rs->parent_id}}</p>
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-warning badge-outline-danger">
+                                                    <a  href="{{route('admin_category_edit',['id'=>$rs->id])}}"
                                                         class="nav-link">edit</a></label>
                                             </td>
                                             <td>
