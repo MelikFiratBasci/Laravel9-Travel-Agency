@@ -8,6 +8,7 @@ use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PackageController extends Controller
 {
@@ -52,6 +53,7 @@ class PackageController extends Controller
         $data->user_id = Auth::id();
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
+        $data->image = Storage::putFile('images',$request->file('image'));
         $data->save();
         return redirect()->route('admin_packages');
     }

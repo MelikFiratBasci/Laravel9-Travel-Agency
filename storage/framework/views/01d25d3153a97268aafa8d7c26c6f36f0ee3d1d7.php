@@ -1,7 +1,6 @@
-@extends('layouts.admin')
-@section('title','Admin Panel Package List')
-@section('keywords','otel,gezi,sinirsiz eglence')
-@section('content')
+<?php $__env->startSection('title','Admin Panel Package List'); ?>
+<?php $__env->startSection('keywords','otel,gezi,sinirsiz eglence'); ?>
+<?php $__env->startSection('content'); ?>
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -13,7 +12,7 @@
 
                                 <label style="width: 200px"
                                     class="badge badge-outline-primary">
-                                    <a  href="{{route('admin_package_add')}}"
+                                    <a  href="<?php echo e(route('admin_package_add')); ?>"
                                         class="nav-link">Ekle</a></label>
 
                             </p>
@@ -35,54 +34,56 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($datalist as $rs)
+                                    <?php $__currentLoopData = $datalist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <td>
-                                                <p>{{$rs->id}}</p>
+                                                <p><?php echo e($rs->id); ?></p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->title}}</p>
+                                                <p><?php echo e($rs->title); ?></p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->keywords}}</p>
+                                                <p><?php echo e($rs->keywords); ?></p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->description}}</p>
+                                                <p><?php echo e($rs->description); ?></p>
                                             </td>
                                             <td>
-                                                @if($rs->image)
-                                                    <img src="{{Storage::url($rs->image)}}" height="30"; alt="">
-                                                @endif
+                                                <?php if($rs->image): ?>
+                                                    <img src="<?php echo e(Storage::url($rs->image)); ?>" height="30"; alt="">
+                                                <?php endif; ?>
                                             </td>
                                             <td>
-                                                <p>{{$rs->category_id}}</p>
+                                                <p><?php echo e($rs->category_id); ?></p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->detail}}</p>
+                                                <p><?php echo e($rs->detail); ?></p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->price}}</p>
+                                                <p><?php echo e($rs->price); ?></p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->status}}</p>
+                                                <p><?php echo e($rs->status); ?></p>
                                             </td>
                                             <td>
                                                 <label class="badge badge-warning badge-outline-danger">
-                                                    <a  href="{{route('admin_package_edit',['id'=>$rs->id])}}"
+                                                    <a  href="<?php echo e(route('admin_package_edit',['id'=>$rs->id])); ?>"
                                                         class="nav-link">edit</a></label>
                                             </td>
                                             <td>
                                                 <label class="badge badge-danger"><a class="nav-link"
-                                                                                     href="{{route('admin_package_delete',['id'=>$rs->id])}}"
+                                                                                     href="<?php echo e(route('admin_package_delete',['id'=>$rs->id])); ?>"
                                                                                      onclick="return confirm('Delete!! Are you sure?')">delete</a></label>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-    @include('admin._footer')
-@endsection
+    <?php echo $__env->make('admin._footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/admin/_package.blade.php ENDPATH**/ ?>
