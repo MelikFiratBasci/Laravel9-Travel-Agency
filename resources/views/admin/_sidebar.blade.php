@@ -1,6 +1,14 @@
 <!-- partial:partials/_sidebar.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
+        <li class="col-12 col-xl-8 mb-4 mb-xl-0">
+            @auth
+                <h3 class="badge-primary">Kullanici</h3>
+                <h4 class="font-weight-bold">{{Auth::user()->name}}
+                <a href="{{route('admin.logout')}}"class="d-block">logout</a>
+                </h4>
+            @endauth
+        </li>
         <!-- CATEGORY DYNAMIC
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -25,9 +33,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admin_home')}}">
+            <a class="nav-link" href="{{route('admin_packages')}}">
                 <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Products</span>
+                <span class="menu-title">Packages</span>
             </a>
         </li>
         <li class="nav-item">

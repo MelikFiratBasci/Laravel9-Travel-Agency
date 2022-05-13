@@ -13,14 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->integer('parent_id')->default(0);
             $table->string('title',150);
             $table->string('keywords')->nullable();
             $table->string('description')->nullable();
-            $table->string('image',100);
-            $table->string('status',5)->nullable()->default('False');
+            $table->string('image',100)->nullable();
+            $table->integer('category_id')->nullable();
+            $table->string('detail');
+            $table->float('price');
+            $table->integer('user_id')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->string('status',5)->nullable()->default('false');
             //timestamps created_at ve updated_at kapsar.
             $table->timestamps();
         });
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('packages');
     }
 };

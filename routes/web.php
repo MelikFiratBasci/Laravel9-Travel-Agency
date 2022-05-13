@@ -20,35 +20,45 @@ Route::get('/hello', function () {
 });
 
 
-
-
 //admin
-Route::get('/admin',[App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminHome')->middleware('auth');
+Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminHome')->middleware('auth');
 //login
-Route::get('/admin/login',[HomeController::class,'login'])->name('admin.login');
-Route::post('/admin/logincheck',[HomeController::class,'logincheck'])->name('admin.logincheck');
-Route::get('/admin/logout',[HomeController::class,'logout'])->name('admin.logout');
+Route::get('/admin/login', [HomeController::class, 'login'])->name('admin.login');
+Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin.logincheck');
+Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin.logout');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 //admin database
-Route::middleware('auth')->prefix('admin')->group(function (){
-    Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin_home');
-    Route::get('/category',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category');
-    Route::get('/category/add',[\App\Http\Controllers\Admin\CategoryController::class,'add'])->name('admin_category_add');
-    Route::post('/category/create',[\App\Http\Controllers\Admin\CategoryController::class,'create'])->name('admin_category_create');
-    Route::post('/category/update/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'update'])->name('admin_category_update');
-    Route::get('/category/edit/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'edit'])->name('admin_category_edit');
-    Route::get('/category/delete/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'destroy'])->name('admin_category_delete');
-    Route::get('/category/show',[\App\Http\Controllers\Admin\CategoryController::class,'show'])->name('admin_category_show');
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
+    #Category
+    Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
+    Route::get('/category/add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
+    Route::post('/category/create', [\App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin_category_create');
+    Route::post('/category/update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin_category_update');
+    Route::get('/category/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin_category_edit');
+    Route::get('/category/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
+    Route::get('/category/show', [\App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
 
+    #Package
+    Route::prefix('package')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('admin_packages');
+        Route::get('create', [\App\Http\Controllers\Admin\PackageController::class, 'create'])->name('admin_package_add');
+        Route::post('store', [\App\Http\Controllers\Admin\PackageController::class, 'store'])->name('admin_package_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\PackageController::class, 'edit'])->name('admin_package_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\PackageController::class, 'update'])->name('admin_package_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\PackageController::class, 'destroy'])->name('admin_package_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\PackageController::class, 'show'])->name('admin_package_show');
+
+    });
 });
 
 
 // 2=call controller function
-Route::get('/home',[HomeController::class,'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/',function (){
+Route::get('/', function () {
     return view('home.index');
 });
 
