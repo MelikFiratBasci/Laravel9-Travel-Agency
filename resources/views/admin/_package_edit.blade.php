@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('title','edit package')
 @section('keywords','otel,gezi,sinirsiz eglence')
+@section('javascript')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+@endSection
 @section('content')
     <div class="col-6 grid-margin stretch-card">
         <div class="card">
@@ -33,10 +41,15 @@
                                value="{{$data->description}}">
                     </div>
                     <div class="form-group">
-                        <label for="detail">detail</label>
-                        <input type="text" name="detail" class="form-control" id="detail"
-                               placeholder="detail"
-                               value="{{$data->detail}}">
+                        <label >detail</label>
+                        <textarea id="detail" name="detail">{{$data->detail}}</textarea>
+                        <script>
+                            $(document).ready(function() {
+                                $('#detail').summernote();
+                            });
+                        </script>
+
+
                     </div>
                     <div class="form-group">
                         <label for="price">price</label>
