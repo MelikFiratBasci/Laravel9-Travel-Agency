@@ -87,9 +87,21 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Package $package)
+    public function update(Request $request, Package $package,$id)
     {
-        //
+        $data = Package::find($id);
+        $data->title = $request->input('title');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        //$data->image = $request->input('image');
+        $data->category_id = $request->input('category_id');;
+        $data->detail = $request->input('detail');
+        $data->price = $request->input('price');
+        $data->user_id = Auth::id();
+        $data->slug = $request->input('slug');
+        $data->status = $request->input('status');
+        $data->save();
+        return redirect()->route('admin_packages');
     }
 
     /**
@@ -98,8 +110,10 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Package $package)
+    public function destroy(Package $package,$id)
     {
-        //
+        $data =Package::find($id);
+        $data->delete();
+        return redirect()->route('admin_packages');
     }
 }
