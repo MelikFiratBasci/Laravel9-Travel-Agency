@@ -11,6 +11,11 @@
                             <h4 class="card-title">Category List</h4>
                             <p class="card-description">
 
+                                <label style="width: 200px"
+                                    class="badge badge-outline-primary">
+                                    <a  href="{{route('admin_category_add')}}"
+                                        class="nav-link">Ekle</a></label>
+
                             </p>
                             <div class="table-responsive">
                                 <table class="table">
@@ -19,31 +24,32 @@
                                         <th>id</th>
                                         <th>title</th>
                                         <th>Created</th>
-                                        <th>Status</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Jacob</td>
-                                        <td>category1</td>
-                                        <td>12 May 2017</td>
-                                        <td><label class="badge badge-warning"><a  class="nav-link" href="{{route('admin_home')}}">Open</a></label></td>
-                                    </tr>
                                     @foreach($datalist as $rs)
-                                    <tr>
-                                        <td>
-                                            <p>{{$rs->id}}</p>
-                                        </td>
-                                        <td>
-                                            <p>{{$rs->title}}</p>
-                                        </td>
-                                        <td>
-                                            <p>{{$rs->created_at}}</p>
-                                        </td>
-                                        <td>
-                                            <label class="badge badge-warning"><a  class="nav-link" href="{{route('admin_home')}}">Open</a></label></td>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <p>{{$rs->id}}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{$rs->title}}</p>
+                                            </td>
+                                            <td>
+                                                <p>{{$rs->created_at}}</p>
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-warning badge-outline-danger"><a
+                                                        class="nav-link">edit</a></label>
+                                            </td>
+                                            <td>
+                                                <label class="badge badge-danger"><a class="nav-link"
+                                                                                     href="{{route('admin_category_delete',['id'=>$rs->id])}}"
+                                                                                     onclick="return confirm('Delete!! Are you sure?')">delete</a></label>
+                                            </td>
+                                        </tr>
                                     @endforeach
 
                                     </tbody>
