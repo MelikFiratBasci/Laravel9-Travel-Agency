@@ -52,6 +52,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [\App\Http\Controllers\Admin\PackageController::class, 'show'])->name('admin_package_show');
 
     });
+    #product Image
     Route::prefix('image')->group(function () {
         Route::get('create/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
         Route::post('store/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
@@ -59,7 +60,12 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
 
     });
+    #Setting
+    Route::get('setting', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
+    Route::get('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
+
 });
+
 
 
 // 2=call controller function
