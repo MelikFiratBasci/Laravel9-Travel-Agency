@@ -12,9 +12,9 @@
                             <p class="card-description">
 
                                 <label style="width: 200px"
-                                    class="badge badge-outline-primary">
-                                    <a  href="{{route('admin_package_add')}}"
-                                        class="nav-link">Ekle</a></label>
+                                       class="badge badge-outline-primary">
+                                    <a href="{{route('admin_package_add')}}"
+                                       class="nav-link">Ekle</a></label>
 
                             </p>
                             <div class="table-responsive">
@@ -26,6 +26,7 @@
                                         <th>keywords</th>
                                         <th>description</th>
                                         <th>image</th>
+                                        <th>Image Gallery</th>
                                         <th>category</th>
                                         <th>detail</th>
                                         <th>price</th>
@@ -51,8 +52,14 @@
                                             </td>
                                             <td>
                                                 @if($rs->image)
-                                                    <img src="{{Storage::url($rs->image)}}" height="30"; alt="">
+                                                    <img src="{{Storage::url($rs->image)}}" height="30" ; alt="">
                                                 @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{route('admin_image_add',['package_id'=>$rs->id])}}"
+                                                   onclick="return !window.open(this.href,'','top=50 left=100 ')">
+                                                    <img src="{{asset('assets/admin/images')}}/imageGallery.jpg">
+                                                </a>
                                             </td>
                                             <td>
                                                 <p>{{$rs->category_id}}</p>
@@ -68,8 +75,8 @@
                                             </td>
                                             <td>
                                                 <label class="badge badge-warning badge-outline-danger">
-                                                    <a  href="{{route('admin_package_edit',['id'=>$rs->id])}}"
-                                                        class="nav-link">edit</a></label>
+                                                    <a href="{{route('admin_package_edit',['id'=>$rs->id])}}"
+                                                       class="nav-link">edit</a></label>
                                             </td>
                                             <td>
                                                 <label class="badge badge-danger"><a class="nav-link"

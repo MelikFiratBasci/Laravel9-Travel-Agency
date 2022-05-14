@@ -3,10 +3,12 @@
     <ul class="nav">
         <li class="col-12 col-xl-8 mb-4 mb-xl-0">
             @auth
-                <h3 class="badge-primary">Kullanici</h3>
-                <h4 class="font-weight-bold">{{Auth::user()->name}}
-                <a href="{{route('admin.logout')}}"class="d-block">logout</a>
-                </h4>
+                <label class="badge badge-outline-primary" >Active User:</label>
+            <br>
+                <label class="text-lg-center"  >{{Auth::user()->name}}
+                    </br></br>
+                <a href="{{route('admin.logout')}}"class="alert-fill-secondary">logout</a>
+                </label>
             @endauth
         </li>
         <!-- CATEGORY DYNAMIC

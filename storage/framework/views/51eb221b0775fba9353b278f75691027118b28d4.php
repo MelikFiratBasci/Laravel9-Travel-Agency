@@ -3,11 +3,13 @@
     <ul class="nav">
         <li class="col-12 col-xl-8 mb-4 mb-xl-0">
             <?php if(auth()->guard()->check()): ?>
-                <h3 class="badge-primary">Kullanici</h3>
-                <h4 class="font-weight-bold"><?php echo e(Auth::user()->name); ?>
+                <label class="badge badge-outline-primary" >Active User:</label>
+            <br>
+                <label class="text-lg-center"  ><?php echo e(Auth::user()->name); ?>
 
-                <a href="<?php echo e(route('admin.logout')); ?>"class="d-block">logout</a>
-                </h4>
+                    </br></br>
+                <a href="<?php echo e(route('admin.logout')); ?>"class="alert-fill-secondary">logout</a>
+                </label>
             <?php endif; ?>
         </li>
         <!-- CATEGORY DYNAMIC
