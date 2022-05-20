@@ -16,15 +16,14 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $data =Setting::first();
-        print_r($data);
-        if (isEmpty($data)) {
+        $data=Setting::first();
+        if ($data===null){
             $data = new Setting();
-            $data->title = 'project title';
+            $data->title='Project Title';
             $data->save();
             $data =Setting::first();
-
         }
+        return view('admin._setting_edit',['data'=>$data]);
     }
 
     /**
@@ -79,7 +78,31 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        //
+        $id=$request->input('id');
+        $data =Setting::find($id);
+        $data->keywords = $request->input('keywords');
+        $data->title = $request->input('title');
+        $data->description = $request->input('description');
+        $data->company = $request->input('company');
+        $data->adress = $request->input('adress');
+        $data->phone = $request->input('phone');
+        $data->fax = $request->input('fax');
+        $data->email = $request->input('email');
+        $data->smtpserver = $request->input('smtpserver');
+        $data->smtpemail = $request->input('smtpemail');
+        $data->smtppassword = $request->input('smtppassword');
+        $data->smtpport = $request->input('smtpport');
+        $data->facebook = $request->input('facebook');
+        $data->twitter = $request->input('twitter');
+        $data->youtube = $request->input('youtube');
+        $data->aboutus = $request->input('aboutus');
+        $data->contact = $request->input('contact');
+        $data->references = $request->input('references');
+        $data->status = $request->input('status');
+
+
+        $data->save();
+        return redirect()->route('admin_setting');
     }
 
     /**
