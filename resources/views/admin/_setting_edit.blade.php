@@ -43,7 +43,8 @@
                     <div class="form-group">
                         <label for="price">adress</label>
                         <input type="text" name="adress" class="form-control" id="adress"
-                               placeholder="adress">
+                               placeholder="adress"
+                               value="{{$data->adress}}">
                     </div>
 
                     <div class="form-group">
