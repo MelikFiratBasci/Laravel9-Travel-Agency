@@ -21,12 +21,12 @@
                                     <thead>
                                     <tr>
                                         <th>id</th>
+                                        <th>category</th>
                                         <th>title</th>
                                         <th>keywords</th>
                                         <th>description</th>
                                         <th>image</th>
                                         <th>Image Gallery</th>
-                                        <th>category</th>
                                         <th>detail</th>
                                         <th>price</th>
                                         <th>status</th>
@@ -41,6 +41,9 @@
                                                 <p><?php echo e($rs->id); ?></p>
                                             </td>
                                             <td>
+                                                <p><?php echo e($rs->category->title); ?></p>
+                                            </td>
+                                            <td>
                                                 <p><?php echo e($rs->title); ?></p>
                                             </td>
                                             <td>
@@ -50,18 +53,15 @@
                                                 <p><?php echo e($rs->description); ?></p>
                                             </td>
                                             <td>
-                                                <?php if($rs->image): ?>
-                                                    <img src="<?php echo e(Storage::url($rs->image)); ?>" height="30" ; alt="">
-                                                <?php endif; ?>
+                                        <?php if($rs->image): ?>
+                                                <img src="<?php echo e(Storage::url($rs->image)); ?>" height="30" ; alt="">
+                                            <?php endif; ?>
                                             </td>
                                             <td>
                                                 <a href="<?php echo e(route('admin_image_add',['package_id'=>$rs->id])); ?>"
                                                    onclick="return !window.open(this.href,'','top=50 left=100 ')">
                                                     <img src="<?php echo e(asset('assets/admin/images')); ?>/imageGallery.jpg">
                                                 </a>
-                                            </td>
-                                            <td>
-                                                <p><?php echo e($rs->category_id); ?></p>
                                             </td>
                                             <td>
                                                 <p><?php echo e($rs->detail); ?></p>

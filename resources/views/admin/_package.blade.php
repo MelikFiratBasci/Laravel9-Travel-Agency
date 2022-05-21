@@ -22,12 +22,12 @@
                                     <thead>
                                     <tr>
                                         <th>id</th>
+                                        <th>category</th>
                                         <th>title</th>
                                         <th>keywords</th>
                                         <th>description</th>
                                         <th>image</th>
                                         <th>Image Gallery</th>
-                                        <th>category</th>
                                         <th>detail</th>
                                         <th>price</th>
                                         <th>status</th>
@@ -42,6 +42,9 @@
                                                 <p>{{$rs->id}}</p>
                                             </td>
                                             <td>
+                                                <p>{{$rs->category->title}}</p>
+                                            </td>
+                                            <td>
                                                 <p>{{$rs->title}}</p>
                                             </td>
                                             <td>
@@ -51,18 +54,15 @@
                                                 <p>{{$rs->description}}</p>
                                             </td>
                                             <td>
-                                                @if($rs->image)
-                                                    <img src="{{Storage::url($rs->image)}}" height="30" ; alt="">
-                                                @endif
+                                        @if($rs->image)
+                                                <img src="{{Storage::url($rs->image)}}" height="30" ; alt="">
+                                            @endif
                                             </td>
                                             <td>
                                                 <a href="{{route('admin_image_add',['package_id'=>$rs->id])}}"
                                                    onclick="return !window.open(this.href,'','top=50 left=100 ')">
                                                     <img src="{{asset('assets/admin/images')}}/imageGallery.jpg">
                                                 </a>
-                                            </td>
-                                            <td>
-                                                <p>{{$rs->category_id}}</p>
                                             </td>
                                             <td>
                                                 <p>{{$rs->detail}}</p>

@@ -13,7 +13,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">package edit form</h4>
-                <form class="forms-sample" action="<?php echo e(route('admin_package_update',['id'=>$data->id])); ?>" method="post">
+                <form class="forms-sample" action="<?php echo e(route('admin_package_update',['id'=>$data->id])); ?>" method="post" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="category">category</label>
@@ -26,7 +26,8 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="title" value="<?php echo e($data->title); ?>">
+                        <input type="text" name="title" class="form-control" id="title" placeholder="title"
+                               value="<?php echo e($data->title); ?>">
                     </div>
                     <div class="form-group">
                         <label for="keywords">Keywords</label>
@@ -40,10 +41,10 @@
                                value="<?php echo e($data->description); ?>">
                     </div>
                     <div class="form-group">
-                        <label >detail</label>
+                        <label>detail</label>
                         <textarea id="detail" name="detail"><?php echo e($data->detail); ?></textarea>
                         <script>
-                            $(document).ready(function() {
+                            $(document).ready(function () {
                                 $('#detail').summernote();
                             });
                         </script>
@@ -58,7 +59,8 @@
 
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="slug" value="<?php echo e($data->slug); ?>">
+                        <input type="text" name="slug" class="form-control" id="slug" placeholder="slug"
+                               value="<?php echo e($data->slug); ?>">
                     </div>
                     <div class="form-group">
                         <label for="status_select">Status</label>
@@ -69,15 +71,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label>File upload</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled
-                                   placeholder="Upload Image">
-                            <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                        </div>
+                        <label>Image</label>
+                        <input type="file" name="image"  class="form-control">
+                        <?php if($data->image): ?>
+                            <img src="<?php echo e(Storage::url($data->image)); ?>" height="100" alt="">
+                        <?php endif; ?>
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">edit package</button>

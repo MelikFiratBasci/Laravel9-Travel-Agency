@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">package edit form</h4>
-                <form class="forms-sample" action="{{route('admin_package_update',['id'=>$data->id])}}" method="post">
+                <form class="forms-sample" action="{{route('admin_package_update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="category">category</label>
@@ -27,7 +27,8 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="title" value="{{$data->title}}">
+                        <input type="text" name="title" class="form-control" id="title" placeholder="title"
+                               value="{{$data->title}}">
                     </div>
                     <div class="form-group">
                         <label for="keywords">Keywords</label>
@@ -41,10 +42,10 @@
                                value="{{$data->description}}">
                     </div>
                     <div class="form-group">
-                        <label >detail</label>
+                        <label>detail</label>
                         <textarea id="detail" name="detail">{{$data->detail}}</textarea>
                         <script>
-                            $(document).ready(function() {
+                            $(document).ready(function () {
                                 $('#detail').summernote();
                             });
                         </script>
@@ -59,7 +60,8 @@
 
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input type="text" name="slug" class="form-control" id="slug" placeholder="slug" value="{{$data->slug}}">
+                        <input type="text" name="slug" class="form-control" id="slug" placeholder="slug"
+                               value="{{$data->slug}}">
                     </div>
                     <div class="form-group">
                         <label for="status_select">Status</label>
@@ -70,15 +72,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label>File upload</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled
-                                   placeholder="Upload Image">
-                            <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                        </div>
+                        <label>Image</label>
+                        <input type="file" name="image"  class="form-control">
+                        @if($data->image)
+                            <img src="{{Storage::url($data->image)}}" height="100" alt="">
+                        @endif
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">edit package</button>
