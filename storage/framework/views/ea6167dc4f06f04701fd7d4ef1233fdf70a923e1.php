@@ -19,8 +19,10 @@
                         <label for="category">category</label>
                         <select class="form-control" name="category_id">
                             <?php $__currentLoopData = $datalist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($rs->id); ?>"
-                                        <?php if($rs->id == $data->category_id): ?> selected="selected" <?php endif; ?>><?php echo e($rs->title); ?></option>
+                                <option value="<?php echo e($rs->id); ?>" <?php if($rs->id = $data->parent_id): ?> selected="selected" <?php endif; ?>>
+                                    <?php echo e(\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)); ?>
+
+                                </option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>

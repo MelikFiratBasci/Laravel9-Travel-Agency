@@ -12,9 +12,9 @@
                             <p class="card-description">
 
                                 <label style="width: 200px"
-                                    class="badge badge-outline-primary">
-                                    <a  href="{{route('admin_category_add')}}"
-                                        class="nav-link">Ekle</a></label>
+                                       class="badge badge-outline-primary">
+                                    <a href="{{route('admin_category_add')}}"
+                                       class="nav-link">Ekle</a></label>
 
                             </p>
                             <div class="table-responsive">
@@ -42,12 +42,12 @@
                                                 <p>{{$rs->status}}</p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->parent_id}}</p>
+                                                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}
                                             </td>
                                             <td>
                                                 <label class="badge badge-warning badge-outline-danger">
-                                                    <a  href="{{route('admin_category_edit',['id'=>$rs->id])}}"
-                                                        class="nav-link">edit</a></label>
+                                                    <a href="{{route('admin_category_edit',['id'=>$rs->id])}}"
+                                                       class="nav-link">edit</a></label>
                                             </td>
                                             <td>
                                                 <label class="badge badge-danger"><a class="nav-link"
@@ -62,5 +62,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     @include('admin._footer')
 @endsection

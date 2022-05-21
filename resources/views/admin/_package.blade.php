@@ -22,13 +22,12 @@
                                     <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>category</th>
+                                        <th >category</th>
                                         <th>title</th>
                                         <th>keywords</th>
                                         <th>description</th>
                                         <th>image</th>
                                         <th>Image Gallery</th>
-                                        <th>detail</th>
                                         <th>price</th>
                                         <th>status</th>
                                         <th>Edit</th>
@@ -42,7 +41,9 @@
                                                 <p>{{$rs->id}}</p>
                                             </td>
                                             <td>
-                                                <p>{{$rs->category->title}}</p>
+                                                <p>
+                                                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category,$rs->category->title)}}
+                                                </p>
                                             </td>
                                             <td>
                                                 <p>{{$rs->title}}</p>
@@ -64,9 +65,7 @@
                                                     <img src="{{asset('assets/admin/images')}}/imageGallery.jpg">
                                                 </a>
                                             </td>
-                                            <td>
-                                                <p>{{$rs->detail}}</p>
-                                            </td>
+
                                             <td>
                                                 <p>{{$rs->price}}</p>
                                             </td>
@@ -91,5 +90,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     @include('admin._footer')
 @endsection

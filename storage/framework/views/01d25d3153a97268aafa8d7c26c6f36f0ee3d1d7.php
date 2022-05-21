@@ -21,13 +21,12 @@
                                     <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>category</th>
+                                        <th >category</th>
                                         <th>title</th>
                                         <th>keywords</th>
                                         <th>description</th>
                                         <th>image</th>
                                         <th>Image Gallery</th>
-                                        <th>detail</th>
                                         <th>price</th>
                                         <th>status</th>
                                         <th>Edit</th>
@@ -41,7 +40,10 @@
                                                 <p><?php echo e($rs->id); ?></p>
                                             </td>
                                             <td>
-                                                <p><?php echo e($rs->category->title); ?></p>
+                                                <p>
+                                                <?php echo e(\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category,$rs->category->title)); ?>
+
+                                                </p>
                                             </td>
                                             <td>
                                                 <p><?php echo e($rs->title); ?></p>
@@ -63,9 +65,7 @@
                                                     <img src="<?php echo e(asset('assets/admin/images')); ?>/imageGallery.jpg">
                                                 </a>
                                             </td>
-                                            <td>
-                                                <p><?php echo e($rs->detail); ?></p>
-                                            </td>
+
                                             <td>
                                                 <p><?php echo e($rs->price); ?></p>
                                             </td>
@@ -90,6 +90,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <?php echo $__env->make('admin._footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 

@@ -8,7 +8,7 @@
                 <label class="text-lg-center"  ><?php echo e(Auth::user()->name); ?>
 
                     </br></br>
-                <a href="<?php echo e(route('admin.logout')); ?>"class="alert-fill-secondary">logout</a>
+                <a href="<?php echo e(route('admin.logout')); ?>"class="alert-fill-danger">logout</a>
                 </label>
             <?php endif; ?>
         </li>

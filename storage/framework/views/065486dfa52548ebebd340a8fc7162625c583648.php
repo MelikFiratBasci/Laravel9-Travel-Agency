@@ -11,9 +11,9 @@
                             <p class="card-description">
 
                                 <label style="width: 200px"
-                                    class="badge badge-outline-primary">
-                                    <a  href="<?php echo e(route('admin_category_add')); ?>"
-                                        class="nav-link">Ekle</a></label>
+                                       class="badge badge-outline-primary">
+                                    <a href="<?php echo e(route('admin_category_add')); ?>"
+                                       class="nav-link">Ekle</a></label>
 
                             </p>
                             <div class="table-responsive">
@@ -41,12 +41,13 @@
                                                 <p><?php echo e($rs->status); ?></p>
                                             </td>
                                             <td>
-                                                <p><?php echo e($rs->parent_id); ?></p>
+                                                <?php echo e(\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)); ?>
+
                                             </td>
                                             <td>
                                                 <label class="badge badge-warning badge-outline-danger">
-                                                    <a  href="<?php echo e(route('admin_category_edit',['id'=>$rs->id])); ?>"
-                                                        class="nav-link">edit</a></label>
+                                                    <a href="<?php echo e(route('admin_category_edit',['id'=>$rs->id])); ?>"
+                                                       class="nav-link">edit</a></label>
                                             </td>
                                             <td>
                                                 <label class="badge badge-danger"><a class="nav-link"
@@ -61,6 +62,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <?php echo $__env->make('admin._footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 
