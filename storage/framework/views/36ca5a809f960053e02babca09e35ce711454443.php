@@ -1,3 +1,6 @@
+<?php
+    $setting=\App\Http\Controllers\HomeController::getSetting()
+?>
 <!-- Footer Start -->
 <div class="footer">
     <div class="container-fluid">
@@ -6,9 +9,9 @@
                 <div class="footer-widget">
                     <h2>Get in Touch</h2>
                     <div class="contact-info">
-                        <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                        <p><i class="fa fa-envelope"></i>email@example.com</p>
-                        <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                        <p><i class="fa fa-map-marker"></i><?php echo e($setting->adress); ?></p>
+                        <p><i class="fa fa-envelope"></i><?php echo e($setting->email); ?></p>
+                        <p><i class="fa fa-phone"></i><?php echo e($setting->phone); ?></p>
                     </div>
                 </div>
             </div>
@@ -18,11 +21,15 @@
                     <h2>Follow Us</h2>
                     <div class="contact-info">
                         <div class="social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                            <a href=""><i class="fab fa-youtube"></i></a>
+                            <?php if($setting->facebook!=null): ?><a href="<?php echo e($setting->facebook); ?> " target=_blank"><i
+                                    class="fab fa-facebook-f"></i></a><?php endif; ?>
+                            <?php if($setting->twitter!=null): ?><a href="<?php echo e($setting->twitter); ?>" target="_blank"><i
+                                    class="fab fa-twitter"></i></a><?php endif; ?>
+                            <?php if($setting->instagram!=null): ?><a href="<?php echo e($setting->instagram); ?>" target="_blank"><i
+                                    class="fab fa-instagram"></i></a><?php endif; ?>
+                            <?php if($setting->youtube!=null): ?><a href="<?php echo e($setting->youtube); ?>" target="_blank"><i
+                                    class="fab fa-youtube"></i></a><?php endif; ?>
+
                         </div>
                     </div>
                 </div>
@@ -55,15 +62,15 @@
             <div class="col-md-6">
                 <div class="payment-method">
                     <h2>We Accept:</h2>
-                    <img src="<?php echo e(asset('assets')); ?>/img/payment-method.png" alt="Payment Method" />
+                    <img src="<?php echo e(asset('assets')); ?>/img/payment-method.png" alt="Payment Method"/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="payment-security">
                     <h2>Secured By:</h2>
-                    <img src="<?php echo e(asset('assets')); ?>/img/godaddy.svg" alt="Payment Security" />
-                    <img src="<?php echo e(asset('assets')); ?>/img/norton.svg" alt="Payment Security" />
-                    <img src="<?php echo e(asset('assets')); ?>/img/ssl.svg" alt="Payment Security" />
+                    <img src="<?php echo e(asset('assets')); ?>/img/godaddy.svg" alt="Payment Security"/>
+                    <img src="<?php echo e(asset('assets')); ?>/img/norton.svg" alt="Payment Security"/>
+                    <img src="<?php echo e(asset('assets')); ?>/img/ssl.svg" alt="Payment Security"/>
                 </div>
             </div>
         </div>
@@ -76,11 +83,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 copyright">
-                <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
+                <p>Copyright &copy; <?php echo e($setting->company); ?> All Rights Reserved</p>
             </div>
 
             <div class="col-md-6 template-by">
-                <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <p><?php echo e($setting->company); ?></p>
             </div>
         </div>
     </div>

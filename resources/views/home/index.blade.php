@@ -1,9 +1,9 @@
 @extends('layouts.home')
-@section('title','Travel agency')
+@section('title',$setting->title)
 @section('description')
-Turkiyenin en guvenilir tatil acentasi..!
+    {{$setting->description}}
 @endsection
-@section('keywords','otel,gezi,sinirsiz eglence')
+@section('keywords',$setting->keywords)
 @section('content')
     @include('home._firstSlider')
     @include('home._feature')

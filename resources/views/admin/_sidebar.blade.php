@@ -7,7 +7,7 @@
             <br>
                 <label class="text-lg-center"  >{{Auth::user()->name}}
                     </br></br>
-                <a href="{{route('admin.logout')}}"class="alert-fill-danger">logout</a>
+                <a href="{{route('logout')}}"class="alert-fill-danger">logout</a>
                 </label>
             @endauth
         </li>

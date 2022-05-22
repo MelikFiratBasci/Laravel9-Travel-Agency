@@ -25,7 +25,7 @@ Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index']
 //login
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin.login');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin.logincheck');
-Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin.logout');
+Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -68,12 +68,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 
 
-// 2=call controller function
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/', function () {
-    return view('home.index');
-});
+//homepage//
+Route::get('/home', [HomeController::class, 'index'])->name('homepage');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
+Route::get('/fag', [HomeController::class, 'faq'])->name('faq');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 
 

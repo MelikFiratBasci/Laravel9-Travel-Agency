@@ -1,8 +1,9 @@
-<?php $__env->startSection('title','Travel agency'); ?>
+<?php $__env->startSection('title',$setting->title); ?>
 <?php $__env->startSection('description'); ?>
-Turkiyenin en guvenilir tatil acentasi..!
+    <?php echo e($setting->description); ?>
+
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('keywords','otel,gezi,sinirsiz eglence'); ?>
+<?php $__env->startSection('keywords',$setting->keywords); ?>
 <?php $__env->startSection('content'); ?>
     <?php echo $__env->make('home._firstSlider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('home._feature', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

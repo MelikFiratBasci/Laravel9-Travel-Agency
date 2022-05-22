@@ -1,19 +1,21 @@
 @foreach($children as $subcategory)
-    <ul class="list-links">
+    <div class="dropdown-item">
 
 
         <div class="collapse" id="subcategories">
-        @if(count($subcategory->children))
-            <ul >{{$subcategory->title}}</ul>
-            <ul class="list-links">
-                @include('home.categorytree',['children'=>$subcategory->children])
-            </ul>
-            <hr>
+            @if(count($subcategory->children))
+                <a class="dropdown-item">{{$subcategory->title}}</a>
+                <a class="dropdown-item">
+                    @include('home.categorytree',['children'=>$subcategory->children])
+                </a>
 
-        @else
-        <ul><a href="#">{{$subcategory->title}}</a> </ul>
 
-        @endif
+            @else
+                <a class="dropdown-item" href="#">{{$subcategory->title}}</a>
+
+            @endif
+
         </div>
-    </ul>
+    </div>
 @endforeach
+

@@ -7,7 +7,7 @@
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                         @auth
                         <h3 class="font-weight-bold">{{Auth::user()->name}}</h3>
-                        <a href="{{route('admin.logout')}}"class="d-block">logout</a>
+                        <a href="{{route('logout')}}"class="d-block">logout</a>
                         <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
                         @endauth
                     </div>

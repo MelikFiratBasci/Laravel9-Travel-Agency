@@ -94,6 +94,7 @@ class SettingController extends Controller
         $data->smtpport = $request->input('smtpport');
         $data->facebook = $request->input('facebook');
         $data->twitter = $request->input('twitter');
+        $data->instagram = $request->input('instagram');
         $data->youtube = $request->input('youtube');
         $data->aboutus = $request->input('aboutus');
         $data->contact = $request->input('contact');
