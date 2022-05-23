@@ -40,4 +40,8 @@
         </div>
     </div>
 </div>
+</div>
+</div>
+</div>
+<!-- Main Slider End -->
 <?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/home/_mainSlider.blade.php ENDPATH**/ ?>

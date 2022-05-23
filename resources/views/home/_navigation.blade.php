@@ -1,7 +1,11 @@
 @php
     $parentCategories =\App\Http\Controllers\HomeController::categoryList();
 @endphp
-
+<div class="header">
+    <!--Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
     <div class="navbar-nav mr-auto">
         <div class="navbar-nav ml-auto">
             <div class="nav-item dropdown">
@@ -26,6 +30,7 @@
             </div>
         </div>
     </div>
+            </div>
 
 
 

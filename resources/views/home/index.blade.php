@@ -4,7 +4,10 @@
     {{$setting->description}}
 @endsection
 @section('keywords',$setting->keywords)
+
 @section('content')
+    @include('home._navigation')
+    @include('home._mainSlider')
     @include('home._firstSlider')
     @include('home._feature')
     @include('home._category')

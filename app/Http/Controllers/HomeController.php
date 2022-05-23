@@ -85,7 +85,8 @@ class HomeController extends Controller
 
     public function test()
     {
-        return view('home.test');
+        $setting = Setting::first();
+        return view('home._blank',['setting'=>$setting]);
     }
 
     public function param($id, $number)
