@@ -1,6 +1,5 @@
-@extends('layouts.home')
-@section('title','User Profile')
-@section('content')
+<?php $__env->startSection('title','User Profile'); ?>
+<?php $__env->startSection('content'); ?>
     <!-- My Account Start -->
     <div class="my-account">
         <div class="container-fluid">
@@ -12,7 +11,7 @@
                         <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Payment Method</a>
                         <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
                         <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
-                        <a class="nav-link" href="{{route('logout')}}"><i class="fa fa-sign-out-alt"></i>Logout</a>
+                        <a class="nav-link" href="<?php echo e(route('logout')); ?>"><i class="fa fa-sign-out-alt"></i>Logout</a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -91,7 +90,7 @@
                         <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                             <h4>Account Details</h4>
                             <div class="row">
-                                @include('profile.show')
+                                <?php echo $__env->make('profile.show', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             </div>
                             <h4>Password change</h4>
                             <div class="row">
@@ -115,4 +114,6 @@
         </div>
     </div>
     <!-- My Account End -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/home/user_profile.blade.php ENDPATH**/ ?>

@@ -19,6 +19,15 @@ Route::get('/hello', function () {
     return 'hello World';
 });
 
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
+    Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('myprofile');
+
+});
+
+
+
+
+
 
 //admin
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminHome')->middleware('auth');
@@ -26,12 +35,19 @@ Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index']
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin.login');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin.logincheck');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 //admin database
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
+
+
+
+
     #Category
     Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
     Route::get('/category/add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
@@ -65,7 +81,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('setting/update', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
 
 });
-
 
 
 //homepage//

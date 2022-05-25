@@ -37,7 +37,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                         <div class="dropdown-menu">
                             <?php if(auth()->guard()->check()): ?>
-                                <strong><a class="dropdown-item"><?php echo e(Auth::user()->name); ?></a></strong>
+                                <strong><a href="<?php echo e(route('myprofile')); ?>" class="dropdown-item"><?php echo e(Auth::user()->name); ?></a></strong>
                                 <br>
 
                                 <a href="<?php echo e(route('logout')); ?>" class="dropdown-item">logout</a>

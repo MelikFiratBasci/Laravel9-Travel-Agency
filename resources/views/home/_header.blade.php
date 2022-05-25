@@ -37,7 +37,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                         <div class="dropdown-menu">
                             @auth
-                                <strong><a class="dropdown-item">{{Auth::user()->name}}</a></strong>
+                                <strong><a href="{{route('myprofile')}}" class="dropdown-item">{{Auth::user()->name}}</a></strong>
                                 <br>
 
                                 <a href="{{route('logout')}}" class="dropdown-item">logout</a>
