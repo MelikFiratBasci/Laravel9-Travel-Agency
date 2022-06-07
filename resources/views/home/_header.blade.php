@@ -24,6 +24,7 @@
                                 <a href="{{route('home')}}" class="dropdown-item">newproducts</a>
                                 <a href="{{route('references')}}" class="dropdown-item">references</a>
                                 <a href="{{route('faq')}}" class="dropdown-item">faq</a>
+                                <a href="{{route('aboutus')}}" class="dropdown-item">aboutus</a>
                                 <a href="{{route('contact')}}" class="dropdown-item">contact</a>
 
                             </div>

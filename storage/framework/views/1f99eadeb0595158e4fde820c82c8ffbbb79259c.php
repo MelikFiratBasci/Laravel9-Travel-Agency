@@ -24,6 +24,7 @@
                                 <a href="<?php echo e(route('home')); ?>" class="dropdown-item">newproducts</a>
                                 <a href="<?php echo e(route('references')); ?>" class="dropdown-item">references</a>
                                 <a href="<?php echo e(route('faq')); ?>" class="dropdown-item">faq</a>
+                                <a href="<?php echo e(route('aboutus')); ?>" class="dropdown-item">aboutus</a>
                                 <a href="<?php echo e(route('contact')); ?>" class="dropdown-item">contact</a>
 
                             </div>
