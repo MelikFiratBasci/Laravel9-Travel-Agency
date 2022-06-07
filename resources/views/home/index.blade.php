@@ -6,6 +6,7 @@
 @section('keywords',$setting->keywords)
 
 @section('content')
+    @include('home._header_bottomBar')
     @include('home._navigation')
     @include('home._mainSlider')
     @include('home._firstSlider')
