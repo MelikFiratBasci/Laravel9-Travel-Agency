@@ -122,7 +122,8 @@ class CategoryController extends Controller
     //delete
     public function destroy(Category $category, $id)
     {
-        DB::table('categories')->where('id', ' = ', $id)->delete();
+        $data = Category::find($id);
+        $data->delete();
         return redirect()->route('admin_category');
     }
 }

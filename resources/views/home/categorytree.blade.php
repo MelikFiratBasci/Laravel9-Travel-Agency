@@ -11,7 +11,7 @@
 
 
             @else
-                <a class="dropdown-item" href="#">{{$subcategory->title}}</a>
+                <a class="dropdown-item" href="{{route('categorypackages',['id'=>$subcategory->id,'slug'=>$subcategory->title])}}">{{$subcategory->title}}</a>
 
             @endif
 

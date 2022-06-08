@@ -103,6 +103,8 @@ Route::get('/fag', [HomeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/package/{id}/{slug}', [HomeController::class, 'package'])->name('package');
+Route::get('/categorypackages/{id}/{slug}', [HomeController::class, 'categorypackages'])->name('categorypackages');
+
 
 
 Route::get('/test', [HomeController::class, 'test'])->name('test');

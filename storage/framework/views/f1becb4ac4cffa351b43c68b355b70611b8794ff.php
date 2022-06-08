@@ -11,7 +11,7 @@
 
 
             <?php else: ?>
-                <a class="dropdown-item" href="#"><?php echo e($subcategory->title); ?></a>
+                <a class="dropdown-item" href="<?php echo e(route('categorypackages',['id'=>$subcategory->id,'slug'=>$subcategory->title])); ?>"><?php echo e($subcategory->title); ?></a>
 
             <?php endif; ?>
 

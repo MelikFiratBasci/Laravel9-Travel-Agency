@@ -40,6 +40,14 @@ class HomeController extends Controller
         $data = Package::find($id);
 
     }
+    public function categorypackages($id,$slug)
+    {
+        $datalist = Package::where('category_id',$id)->get();
+        $data =Package::find($id);
+        return view('home._category_packages',['data'=>$data,'datalist'=>$datalist]);
+
+
+    }
 
     public function aboutus()
     {
