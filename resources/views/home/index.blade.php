@@ -29,7 +29,7 @@
     </div>
     <!-- Call to Action End -->
 
-    @include('home._popularProduct')
+    @include('home._popularPackage')
 
     <!-- Newsletter Start -->
     <div class="newsletter">
@@ -48,6 +48,6 @@
         </div>
     </div>
     <!-- Newsletter End -->
-    @include('home._recentProduct')
+    @include('home._recentPackage')
     @include('home._reference')
 @endsection

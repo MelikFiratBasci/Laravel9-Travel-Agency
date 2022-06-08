@@ -1,11 +1,11 @@
-<!-- Featured Product Start -->
-<div class="featured-product product">
+<!-- Recent Product Start -->
+<div class="recent-product product">
     <div class="container-fluid">
         <div class="section-header">
-            <h1>Featured Product</h1>
+            <h1>Recent Product</h1>
         </div>
         <div class="row align-items-center product-slider product-slider-3">
-            <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $last; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="product-image">
                             <a href="<?php echo e(route('package',['id'=>$rs->id,'slug'=>$rs->slug])); ?>">
-                                <img src="<?php echo e(\Illuminate\Support\Facades\Storage::url($rs->image)); ?>" style="200px"
+                                <img src="<?php echo e(\Illuminate\Support\Facades\Storage::url($rs->image)); ?>" style="height: 200px"
                                      alt="">
                             </a>
                             <div class="product-action">
@@ -42,5 +42,5 @@
         </div>
     </div>
 </div>
-<!-- Featured Product End -->
-<?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/home/_popularPackage.blade.php ENDPATH**/ ?>
+<!-- Recent Product End -->
+<?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/home/_recentPackage.blade.php ENDPATH**/ ?>

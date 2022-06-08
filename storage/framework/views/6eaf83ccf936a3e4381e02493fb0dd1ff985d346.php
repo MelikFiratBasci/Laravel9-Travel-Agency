@@ -55,6 +55,7 @@
                             </div>
                         </div>
 
+                        <?php $__currentLoopData = $datalist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-4">
                             <div class="product-item">
                                 <div class="product-title">
@@ -68,8 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="<?php echo e(asset('assets')); ?>/img/product-1.jpg" alt="Product Image">
+                                    <a href="<?php echo e(route('package',['id'=>$rs->id,'slug'=>$rs->slug])); ?>">
+                                        <img src="<?php echo e(\Illuminate\Support\Facades\Storage::url($rs->image)); ?>" style="..." alt="">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -78,12 +79,12 @@
                                     </div>
                                 </div>
                                 <div class="product-price">
-                                    <h3><span>$</span>99</h3>
+                                    <h3><span>$</span><?php echo e($rs->price); ?></h3>
                                     <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                 </div>
                             </div>
                         </div>
-
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 

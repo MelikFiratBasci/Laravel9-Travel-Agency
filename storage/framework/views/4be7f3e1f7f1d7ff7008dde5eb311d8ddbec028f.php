@@ -29,7 +29,7 @@
     </div>
     <!-- Call to Action End -->
 
-    <?php echo $__env->make('home._popularProduct', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('home._popularPackage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- Newsletter Start -->
     <div class="newsletter">
@@ -48,7 +48,7 @@
         </div>
     </div>
     <!-- Newsletter End -->
-    <?php echo $__env->make('home._recentProduct', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('home._recentPackage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('home._reference', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 

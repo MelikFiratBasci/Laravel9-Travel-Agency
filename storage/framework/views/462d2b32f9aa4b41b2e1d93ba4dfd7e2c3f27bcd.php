@@ -5,7 +5,7 @@
             <h1>Featured Product</h1>
         </div>
         <div class="row align-items-center product-slider product-slider-3">
-            <?php $__currentLoopData = $slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $daily; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="product-image">
                             <a href="<?php echo e(route('package',['id'=>$rs->id,'slug'=>$rs->slug])); ?>">
-                                <img src="<?php echo e(\Illuminate\Support\Facades\Storage::url($rs->image)); ?>" style="200px"
+                                <img src="<?php echo e(\Illuminate\Support\Facades\Storage::url($rs->image)); ?>" style="height: 200px"
                                      alt="">
                             </a>
                             <div class="product-action">

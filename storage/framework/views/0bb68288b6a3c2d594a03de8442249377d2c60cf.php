@@ -149,4 +149,4 @@
     </div>
 </div>
 <!-- Recent Product End -->
-<?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/home/_recentProduct.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\php\laravel\Laravel9-Travel-Agency\resources\views/home/_recentPackage.blade.php ENDPATH**/ ?>

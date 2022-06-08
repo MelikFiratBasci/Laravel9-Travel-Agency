@@ -105,6 +105,8 @@ Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendm
 Route::get('/package/{id}/{slug}', [HomeController::class, 'package'])->name('package');
 Route::get('/categorypackages/{id}/{slug}', [HomeController::class, 'categorypackages'])->name('categorypackages');
 
+Route::get('/addtocart/{id}', [HomeController::class, 'index'])->name('addtocart');
+
 
 
 Route::get('/test', [HomeController::class, 'test'])->name('test');
