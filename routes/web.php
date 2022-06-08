@@ -70,7 +70,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('update/{id}', [\App\Http\Controllers\Admin\PackageController::class, 'update'])->name('admin_package_update');
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\PackageController::class, 'destroy'])->name('admin_package_delete');
         Route::get('show', [\App\Http\Controllers\Admin\PackageController::class, 'show'])->name('admin_package_show');
-
+    });
+    #message
+    Route::prefix('message')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('admin_message');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'edit'])->name('admin_message_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'update'])->name('admin_message_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('admin_message_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\MessageController::class, 'show'])->name('admin_message_show');
     });
     #product Image
     Route::prefix('image')->group(function () {
@@ -94,6 +101,8 @@ Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/fag', [HomeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+
 Route::get('/test', [HomeController::class, 'test'])->name('test');
 
 
