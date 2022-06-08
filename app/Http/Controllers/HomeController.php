@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Message;
 use App\Models\Package;
 use App\Models\Setting;
@@ -44,6 +45,8 @@ class HomeController extends Controller
     public function package($id,$slug)
     {
         $data = Package::find($id);
+        $datalist=Image::where('package_id',$id)->get();
+        return view('home._package_detail',['data'=>$data,'datalist'=>$datalist]);
 
     }
     public function addtocart($id)

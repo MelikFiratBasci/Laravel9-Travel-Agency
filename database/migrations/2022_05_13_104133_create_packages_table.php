@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('title',150);
             $table->string('keywords')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('image',100)->nullable();
             $table->integer('category_id')->nullable();
             $table->string('detail');
