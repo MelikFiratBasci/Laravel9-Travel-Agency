@@ -5,27 +5,17 @@
             <!--MainSlider -->
             <div class="col-md-9">
                 <div class="header-slider normal-slider">
+                    @foreach($slider as $rs)
                     <div class="header-slider-item">
-                        <img src="{{asset('assets')}}/img/slider-1.jpg" alt="Slider Image"/>
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" syle="height 400px" alt="Slider Image"/>
                         <div class="header-slider-caption">
-                            <p>Some text goes here that describes the image</p>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                            <p>{{$rs->title}}</p>
+                            <a class="btn" href="{{route('package',['id'=>$rs->id,'slug'=>$rs->slug])}}"><i class="fa fa-shopping-cart"></i>{{$rs->price}}</a>
                         </div>
                     </div>
-                    <div class="header-slider-item">
-                        <img src="{{asset('assets')}}/img/slider-2.jpg" alt="Slider Image"/>
-                        <div class="header-slider-caption">
-                            <p>Some text goes here that describes the image</p>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="header-slider-item">
-                        <img src="{{asset('assets')}}/img/slider-3.jpg" alt="Slider Image"/>
-                        <div class="header-slider-caption">
-                            <p>Some text goes here that describes the image</p>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
             </div>
             <div class="col-md-3">

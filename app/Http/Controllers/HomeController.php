@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Message;
+use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,21 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        return view('home.index',['setting'=>$setting]);
+        $slider=Package::select('id','title','image','price','slug')->limit(4)->get();
+
+        $data=['setting'=>$setting,
+            'slider'=>$slider,
+            'page'=>'home'
+        ];
+        return view('home.index',$data);
     }
+
+    public function package($id,$slug)
+    {
+        $data = Package::find($id);
+
+    }
+
     public function aboutus()
     {
         $setting = Setting::first();

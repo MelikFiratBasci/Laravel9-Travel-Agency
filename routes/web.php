@@ -102,6 +102,8 @@ Route::get('/references', [HomeController::class, 'references'])->name('referenc
 Route::get('/fag', [HomeController::class, 'faq'])->name('faq');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+Route::get('/package/{id}/{slug}', [HomeController::class, 'package'])->name('package');
+
 
 Route::get('/test', [HomeController::class, 'test'])->name('test');
 
