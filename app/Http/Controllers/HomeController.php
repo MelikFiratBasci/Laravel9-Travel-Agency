@@ -41,6 +41,24 @@ class HomeController extends Controller
         ];
         return view('home.index',$data);
     }
+    public function getpackage(Request $request)
+    {
+        $search=$request->input('search');
+        $count=Package::where('title','like','%'.$search.'%')->get()->count();
+        if ($count==1) {
+            $data = Package::where('title', $request->input('search'))->first();
+            return redirect()->route('package', ['id' => $data->id, 'slug' => $data->slug]);
+        }
+        else{
+            return redirect()->route('packagelist',['search'=>$search]);
+        }
+    }
+    public function packagelist($search)
+    {
+        $datalist = Package::where('title','like','%'.$search.'%')->get();
+        return view('home.search_packages', ['search' => $search, 'datalist' => $datalist]);
+
+    }
 
     public function package($id,$slug)
     {

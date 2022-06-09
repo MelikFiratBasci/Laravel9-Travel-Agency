@@ -79,7 +79,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('admin_message_delete');
         Route::get('show', [\App\Http\Controllers\Admin\MessageController::class, 'show'])->name('admin_message_show');
     });
-    #product Image
+    #package Image
     Route::prefix('image')->group(function () {
         Route::get('create/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
         Route::post('store/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
@@ -104,6 +104,8 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
 Route::get('/package/{id}/{slug}', [HomeController::class, 'package'])->name('package');
 Route::get('/categorypackages/{id}/{slug}', [HomeController::class, 'categorypackages'])->name('categorypackages');
+Route::post('/getpackage', [HomeController::class, 'getpackage'])->name('getpackage');
+Route::get('/packagelist/{search}', [HomeController::class, 'packagelist'])->name('packagelist');
 
 Route::get('/addtocart/{id}', [HomeController::class, 'index'])->name('addtocart');
 

@@ -10,8 +10,27 @@
             </div>
             <div class="col-md-6">
                 <div class="search">
-                    <input type="text" placeholder="Search">
-                    <button><i class="fa fa-search"></i></button>
+                    <form action="<?php echo e(route('getpackage')); ?>" method="post">
+                        <?php echo csrf_field(); ?>
+                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('search')->html();
+} elseif ($_instance->childHasBeenRendered('DNnnIX9')) {
+    $componentId = $_instance->getRenderedChildComponentId('DNnnIX9');
+    $componentTag = $_instance->getRenderedChildComponentTagName('DNnnIX9');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('DNnnIX9');
+} else {
+    $response = \Livewire\Livewire::mount('search');
+    $html = $response->html();
+    $_instance->logRenderedChild('DNnnIX9', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
+                        <button type="submit" class="search-btn"><i class="fa fa-search"></i> </button>
+                    </form>
+                    <?php echo \Livewire\Livewire::scripts(); ?>
+
                 </div>
             </div>
             <div class="col-md-3">
