@@ -53,6 +53,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('admin_comment')}}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Reviews</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin_faq')}}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Faq</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="icon-layout menu-icon"></i>
                 <span class="menu-title">UI Elements</span>

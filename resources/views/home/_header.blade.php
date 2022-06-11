@@ -58,6 +58,7 @@
 
 
 <!-- Bottom Bar Start -->
+@include('home._header_bottomBar')
 
 <!-- Bottom Bar End -->
 

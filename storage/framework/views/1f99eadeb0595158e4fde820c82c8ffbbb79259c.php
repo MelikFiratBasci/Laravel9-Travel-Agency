@@ -58,6 +58,7 @@
 
 
 <!-- Bottom Bar Start -->
+<?php echo $__env->make('home._header_bottomBar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <!-- Bottom Bar End -->
 

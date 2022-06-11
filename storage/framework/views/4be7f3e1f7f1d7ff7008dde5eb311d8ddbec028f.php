@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title',$setting->title); ?>
 <?php $__env->startSection('description'); ?>
     <?php echo e($setting->description); ?>
@@ -7,7 +6,6 @@
 <?php $__env->startSection('keywords',$setting->keywords); ?>
 
 <?php $__env->startSection('content'); ?>
-    <?php echo $__env->make('home._header_bottomBar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('home._navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('home._mainSlider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('home._firstSlider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
