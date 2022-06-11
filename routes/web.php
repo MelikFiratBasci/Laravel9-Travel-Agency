@@ -79,6 +79,16 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('admin_message_delete');
         Route::get('show', [\App\Http\Controllers\Admin\MessageController::class, 'show'])->name('admin_message_show');
     });
+
+    #comment
+    Route::prefix('comment')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\CommentController::class, 'index'])->name('admin_comment');
+        Route::get('show/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'show'])->name('admin_comment_show');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'update'])->name('admin_comment_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'destroy'])->name('admin_comment_delete');
+    });
+
+
     #package Image
     Route::prefix('image')->group(function () {
         Route::get('create/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
@@ -106,6 +116,7 @@ Route::get('/package/{id}/{slug}', [HomeController::class, 'package'])->name('pa
 Route::get('/categorypackages/{id}/{slug}', [HomeController::class, 'categorypackages'])->name('categorypackages');
 Route::post('/getpackage', [HomeController::class, 'getpackage'])->name('getpackage');
 Route::get('/packagelist/{search}', [HomeController::class, 'packagelist'])->name('packagelist');
+Route::post('/storecomment}', [HomeController::class, 'storecomment'])->name('storecomment');
 
 Route::get('/addtocart/{id}', [HomeController::class, 'index'])->name('addtocart');
 

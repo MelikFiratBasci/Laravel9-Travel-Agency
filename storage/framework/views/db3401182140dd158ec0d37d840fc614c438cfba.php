@@ -40,13 +40,15 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="product-content">
+                                    <?php echo $__env->make('home.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                     <div class="title"><h2><?php echo e($data->title); ?></h2></div>
                                     <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+
+                                        <h7>(<?php echo e($reviews->count()); ?>)<i class="<?php if($avg<1): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                        <i class="<?php if($avg<2): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                        <i class="<?php if($avg<3): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                        <i class="<?php if($avg<4): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                        <i class="<?php if($avg<5): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i></h7>
                                     </div>
                                     <div class="price">
                                         <h4>Price:</h4>
@@ -79,7 +81,8 @@
                                     </div>
                                     -->
                                     <div class="action">
-                                        <a class="btn" href="<?php echo e(route('addtocart',['id'=>$data->id])); ?>"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                        <a class="btn" href="<?php echo e(route('addtocart',['id'=>$data->id])); ?>"><i
+                                                class="fa fa-shopping-cart"></i>Add to Cart</a>
                                         <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -97,17 +100,18 @@
                                     <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#reviews">Reviews (1)</a>
+                                    <a class="nav-link" data-toggle="pill" href="#reviews">Reviews(<?php echo e($reviews->count()); ?>)</a>
                                 </li>
                             </ul>
+
 
                             <div class="tab-content">
                                 <div id="description" class="container tab-pane active">
                                     <h1>
-                                    <p>
-                                        <?php echo $data->detail; ?>
+                                        <p>
+                                            <?php echo $data->detail; ?>
 
-                                    </p>
+                                        </p>
                                     </h1>
                                 </div>
                                 <div id="specification" class="container tab-pane fade">
@@ -120,46 +124,76 @@
                                         <li>Lorem ipsum dolor sit amet</li>
                                     </ul>
                                 </div>
-                                <div id="reviews" class="container tab-pane fade">
-                                    <div class="reviews-submitted">
-                                        <div class="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+
+
+
+                                    <div id="reviews" class="container tab-pane fade">
+                                        <div class="reviews-submitted">
+                                            <?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="reviewer"><?php echo e($rs->user->name); ?> - <span><?php echo e($rs->created_at); ?></span>
+                                            </div>
+                                            <div class="ratting">
+                                                <i class="<?php if($rs->rate<1): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                                <i class="<?php if($rs->rate<2): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                                <i class="<?php if($rs->rate<3): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                                <i class="<?php if($rs->rate<4): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                                <i class="<?php if($rs->rate<5): ?> fa fa-star-o empty <?php else: ?> fa fa-star  <?php endif; ?>"></i>
+                                            </div>
+                                            <strong><?php echo e($rs->subject); ?></strong>
+                                            <p>
+                                                <?php echo e($rs->review); ?>
+
+                                            </p>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </div>
-                                        <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam.
-                                        </p>
+
+
+                                        <form class="reviews-submit" action="<?php echo e(route('storecomment')); ?>" method="post">
+                                            <?php echo csrf_field(); ?>
+                                            <h4>Give your Review:</h4>
+                                            <div class="ratting">
+                                                <i class="far fa-star">
+                                                    <input type="radio" id="star5" name="rate" value="5"
+                                                    >
+                                                </i>
+                                                <i class="far fa-star"> <input type="radio" id="star4" name="rate"
+                                                                               value="4"
+                                                    ></i>
+                                                <i class="far fa-star"> <input type="radio" id="star3" name="rate"
+                                                                               value="3"
+                                                    ></i>
+                                                <i class="far fa-star"> <input type="radio" id="star2" name="rate"
+                                                                               value="2"
+                                                    ></i>
+                                                <i class="far fa-star"> <input type="radio" id="star1" name="rate"
+                                                                               value="1"
+                                                    ></i>
+                                            </div>
+                                            <div class="row form">
+                                                <input class="input" type="hidden" placeholder="package_id"
+                                                       name="package_id"
+                                                       value="<?php echo e($data->id); ?>">
+                                                <input class="input" type="hidden" placeholder="slug" name="slug"
+                                                       value="<?php echo e($data->slug); ?>">
+                                                <div class="col-sm-6">
+                                                    <input class="input" type="text" placeholder="subject"
+                                                           name="subject">
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <textarea class="input" name="review"
+                                                              placeholder="Review"></textarea>
+                                                </div>
+                                                <?php if(auth()->guard()->check()): ?>
+                                                    <div class="col-sm-12">
+                                                        <button>Submit</button>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </form>
+
+
                                     </div>
-                                    <div class="reviews-submit">
-                                        <h4>Give your Review:</h4>
-                                        <div class="ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                        <div class="row form">
-                                            <div class="col-sm-6">
-                                                <input type="text" placeholder="Name">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="email" placeholder="Email">
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <textarea placeholder="Review"></textarea>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <button>Submit</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

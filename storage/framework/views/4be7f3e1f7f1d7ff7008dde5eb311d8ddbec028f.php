@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title',$setting->title); ?>
 <?php $__env->startSection('description'); ?>
     <?php echo e($setting->description); ?>
