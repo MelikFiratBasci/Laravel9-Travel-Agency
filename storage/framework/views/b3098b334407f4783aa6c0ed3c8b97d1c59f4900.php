@@ -9,6 +9,8 @@
                         <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
                         <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Orders</a>
                         <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Payment Method</a>
+                        <a class="nav-link" id="package-nav" data-toggle="pill" href="#package-tab" role="tab"><i class="fa fa-barcode"></i>My Package</a>
+
                         <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
                         <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
                         <a class="nav-link" href="<?php echo e(route('logout')); ?>"><i class="fa fa-sign-out-alt"></i>Logout</a>
@@ -70,6 +72,10 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque.
                             </p>
                         </div>
+
+                        <?php echo $__env->make('home.user_package', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        <div class="tab-pane fade" id="add-package-tab" role="tabpanel" aria-labelledby="add-package-nav"></div>
+
                         <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
                             <h4>Address</h4>
                             <div class="row">

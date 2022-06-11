@@ -11,6 +11,7 @@
                             <h4 class="card-title">package List</h4>
                             <p class="card-description">
 
+
                                 <label style="width: 200px"
                                        class="badge badge-outline-primary">
                                     <a href="{{route('admin_package_add')}}"

@@ -26,6 +26,25 @@ Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(fu
 Route::middleware('auth')->prefix('user')->namespace('myaccount')->group(function () {
     Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('userprofile');
 
+
+    #Package
+    Route::prefix('package')->group(function () {
+        Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('user_packages');
+        Route::get('create', [\App\Http\Controllers\PackageController::class, 'create'])->name('user_package_add');
+        Route::post('store', [\App\Http\Controllers\PackageController::class, 'store'])->name('user_package_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\PackageController::class, 'edit'])->name('user_package_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\PackageController::class, 'update'])->name('user_package_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\PackageController::class, 'destroy'])->name('user_package_delete');
+        Route::get('show', [\App\Http\Controllers\PackageController::class, 'show'])->name('user_package_show');
+    });
+    #package Image
+    Route::prefix('image')->group(function () {
+        Route::get('create/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('user_image_add');
+        Route::post('store/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('user_image_store');
+        Route::get('delete/{id}/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('user_image_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('user_image_show');
+
+    });
 });
 
 
