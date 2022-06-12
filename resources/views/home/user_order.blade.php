@@ -7,6 +7,7 @@ $grand = 0;
             <thead class="thead-dark">
             <tr>
                 <th>Package</th>
+                <th>Status</th>
                 <th>Start date</th>
                 <th>End date</th>
                 <th>Package price</th>
@@ -30,6 +31,7 @@ $grand = 0;
                             </a>
                         </div>
                     </td>
+                    <td>{{$rs->status}}</td>
                     <td>{{$rs->start_date}}</td>
                     <td>{{$rs->end_date}}</td>
                     <td>{{$rs->package->price}}</td>

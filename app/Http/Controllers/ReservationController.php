@@ -18,7 +18,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $datalist = Reservation::where('user_id', Auth::id())->whereNot('status', 'True')->get();
+        $datalist = Reservation::where('user_id', Auth::id())->where('status', 'False')->get();
         return view('home.user_reservation', ['datalist' => $datalist]);
     }
 
@@ -32,7 +32,7 @@ class ReservationController extends Controller
         $datalist = Reservation::where('user_id', Auth::id())->where('status', 'False')->get();
         #dd($request);
         foreach ($datalist as $rs) {
-            $rs->status = 'True';
+            $rs->status = 'Pndng';
             $rs->save();
         }
         return redirect()->back()->with('success', 'reservation updated');

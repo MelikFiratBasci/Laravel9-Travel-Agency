@@ -13,21 +13,17 @@
                     <form action="{{route('getpackage')}}" method="post">
                         @csrf
                         @livewire('search')
-                        <button type="submit" class="search-btn"><i class="fa fa-search"></i> </button>
+                        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                     @livewireScripts
                 </div>
-@include('home.messages')
+                @include('home.messages')
             </div>
             <div class="col-md-3">
                 <div class="user">
-                    <a href="wishlist.html" class="btn wishlist">
-                        <i class="fa fa-heart"></i>
-                        <span>(0)</span>
-                    </a>
                     <a href="{{route('user_reservation')}}" class="btn cart">
                         <i class="fa fa-shopping-cart"></i>
-                        <span>(0)</span>
+                        <span>Wishlist</span>
                     </a>
                 </div>
             </div>

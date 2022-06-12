@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Ordercontroller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ReservationController;
@@ -79,9 +80,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_home');
 
-
-
-
+    #order
+    Route::prefix('order')->group(function () {
+        Route::get('/', [Ordercontroller::class, 'index'])->name('admin_orders');
+        Route::post('update/{id}', [Ordercontroller::class, 'update'])->name('admin_order_update');
+        Route::get('delete/{id}', [Ordercontroller::class, 'destroy'])->name('admin_order_delete');
+    });
     #Category
     Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
     Route::get('/category/add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
