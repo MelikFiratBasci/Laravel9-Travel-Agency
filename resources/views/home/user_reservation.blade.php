@@ -95,8 +95,8 @@
                                         <h2>Grand Total<span>{{$grand}}</span></h2>
                                     </div>
                                     <div class="cart-btn">
-                                        <button>Update Cart</button>
-                                        <button>Checkout</button>
+                                        <a href="{{route('user_reservation_confirm')}}"><button><i
+                                                class="fa fa-shopping-cart"></i></button></a>
                                     </div>
                                 </div>
                             </div>

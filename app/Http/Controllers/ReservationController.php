@@ -18,7 +18,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $datalist = Reservation::where('user_id',Auth::id())->get();
+        $datalist = Reservation::where('user_id', Auth::id())->whereNot('status', 'True')->get();
         return view('home.user_reservation', ['datalist' => $datalist]);
     }
 
@@ -29,42 +29,47 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        $datalist = Reservation::where('user_id', Auth::id())->where('status', 'False')->get();
+        #dd($request);
+        foreach ($datalist as $rs) {
+            $rs->status = 'True';
+            $rs->save();
+        }
+        return redirect()->back()->with('success', 'reservation updated');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
-        $data=Reservation::where('package_id',$id)->where('user_id',Auth::id())->first();
-       #
-        if ($data&&$data->start_date==$request->input('start_date')&&$data->end_date==$request->input('end_date')){
-            $data->person = $data->person +$request->input('person');
+        $data = Reservation::where('package_id', $id)->where('user_id', Auth::id())->first();
+        #
+        if ($data && $data->start_date == $request->input('start_date') && $data->end_date == $request->input('end_date')) {
+            $data->person = $data->person + $request->input('person');
             dd($request);
-        }
-        else{
+        } else {
             $data = new Reservation();
             #dd($request);
-            $data->package_id =$id;
-            $data->user_id =Auth::id();
-            $data->person=$request->input('person');
+            $data->package_id = $id;
+            $data->user_id = Auth::id();
+            $data->person = $request->input('person');
             $data->start_date = $request->input('start_date');
             $data->end_date = $request->input('end_date');
 
         }
 
         $data->save();
-        return redirect()->back()->with('success','Eklendi');
+        return redirect()->back()->with('success', 'Eklendi');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
     public function show(Reservation $reservation)
@@ -75,7 +80,7 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
     public function edit(Reservation $reservation)
@@ -86,29 +91,29 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reservation  $reservation
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation,$id)
+    public function update(Request $request, Reservation $reservation, $id)
     {
-        $data=Reservation::where('package_id',$id)->first();
-       #dd($request);
+        $data = Reservation::where('package_id', $id)->first();
+        #dd($request);
         $data->person = $request->input('person');
         $data->save();
-        return redirect()->back()->with('success','reservation updated');
+        return redirect()->back()->with('success', 'reservation updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @param \App\Models\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservation,$id)
+    public function destroy(Reservation $reservation, $id)
     {
         $data = Reservation::find($id);
         $data->delete();
-        return redirect()->back()->with('success','package reservation deleted');
+        return redirect()->back()->with('success', 'package reservation deleted');
     }
 }

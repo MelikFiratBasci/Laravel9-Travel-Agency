@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,8 @@ class UserController extends Controller
     public function index()
     {
         $datalist = Package::where('user_id',Auth::id())->get();
-        return view('home.user_profile', ['datalist' => $datalist]);
+        $orderlist = Reservation::where('user_id', Auth::id())->wherenot('status', 'False')->get();
+        return view('home.user_profile', ['datalist' => $datalist,'orderlist'=>$orderlist]);
     }
 
     /**

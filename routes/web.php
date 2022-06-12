@@ -43,6 +43,8 @@ Route::middleware('auth')->prefix('user')->namespace('myaccount')->group(functio
     Route::prefix('reservation')->group(function () {
         Route::get('/', [ReservationController::class, 'index'])->name('user_reservation');
         Route::post('store/{id}', [ReservationController::class, 'store'])->name('user_reservation_add');
+        Route::get('create', [ReservationController::class, 'create'])->name('user_reservation_confirm');
+
         Route::post('update/{id}', [ReservationController::class, 'update'])->name('user_reservation_update');
         Route::get('delete/{id}', [ReservationController::class, 'destroy'])->name('user_reservation_delete');
     });
