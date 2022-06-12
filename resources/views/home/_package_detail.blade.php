@@ -93,7 +93,7 @@
                                             <button type="submit" class="primary-btn add-to-cart"><i
                                                     class="fa fa-shopping-cart">Book Now</i>
                                             </button>
-                                            <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+
                                         </div>
                                     </form>
                                 </div>

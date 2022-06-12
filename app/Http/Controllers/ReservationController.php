@@ -41,9 +41,10 @@ class ReservationController extends Controller
     public function store(Request $request,$id)
     {
         $data=Reservation::where('package_id',$id)->where('user_id',Auth::id())->first();
-        if ($data->start_date==$request->input('start_date')&&$data->end_date==$request->input('end_date')){
+       #
+        if ($data&&$data->start_date==$request->input('start_date')&&$data->end_date==$request->input('end_date')){
             $data->person = $data->person +$request->input('person');
-
+            dd($request);
         }
         else{
             $data = new Reservation();
