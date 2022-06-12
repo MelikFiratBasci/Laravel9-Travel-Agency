@@ -15,15 +15,15 @@
                         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search')->html();
-} elseif ($_instance->childHasBeenRendered('3k8iT7K')) {
-    $componentId = $_instance->getRenderedChildComponentId('3k8iT7K');
-    $componentTag = $_instance->getRenderedChildComponentTagName('3k8iT7K');
+} elseif ($_instance->childHasBeenRendered('ayAjzgn')) {
+    $componentId = $_instance->getRenderedChildComponentId('ayAjzgn');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ayAjzgn');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('3k8iT7K');
+    $_instance->preserveRenderedChild('ayAjzgn');
 } else {
     $response = \Livewire\Livewire::mount('search');
     $html = $response->html();
-    $_instance->logRenderedChild('3k8iT7K', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ayAjzgn', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -32,6 +32,7 @@ echo $html;
                     <?php echo \Livewire\Livewire::scripts(); ?>
 
                 </div>
+<?php echo $__env->make('home.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
             <div class="col-md-3">
                 <div class="user">
@@ -39,7 +40,7 @@ echo $html;
                         <i class="fa fa-heart"></i>
                         <span>(0)</span>
                     </a>
-                    <a href="cart.html" class="btn cart">
+                    <a href="<?php echo e(route('user_reservation')); ?>" class="btn cart">
                         <i class="fa fa-shopping-cart"></i>
                         <span>(0)</span>
                     </a>

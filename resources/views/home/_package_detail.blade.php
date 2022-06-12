@@ -44,47 +44,58 @@
                                     <div class="title"><h2>{{$data->title}}</h2></div>
                                     <div class="ratting">
 
-                                        <h7>({{$reviews->count()}})<i class="@if($avg<1) fa fa-star-o empty @else fa fa-star  @endif"></i>
-                                        <i class="@if($avg<2) fa fa-star-o empty @else fa fa-star  @endif"></i>
-                                        <i class="@if($avg<3) fa fa-star-o empty @else fa fa-star  @endif"></i>
-                                        <i class="@if($avg<4) fa fa-star-o empty @else fa fa-star  @endif"></i>
-                                        <i class="@if($avg<5) fa fa-star-o empty @else fa fa-star  @endif"></i></h7>
+                                        <h7>({{$reviews->count()}})<i
+                                                class="@if($avg<1) fa fa-star-o empty @else fa fa-star  @endif"></i>
+                                            <i class="@if($avg<2) fa fa-star-o empty @else fa fa-star  @endif"></i>
+                                            <i class="@if($avg<3) fa fa-star-o empty @else fa fa-star  @endif"></i>
+                                            <i class="@if($avg<4) fa fa-star-o empty @else fa fa-star  @endif"></i>
+                                            <i class="@if($avg<5) fa fa-star-o empty @else fa fa-star  @endif"></i></h7>
                                     </div>
                                     <div class="price">
                                         <h4>Price:</h4>
                                         <p>{{$data->price}} <span>{{$data->price+50}}</span></p>
                                     </div>
-                                    <!--<div class="quantity">
-                                        <h4>Quantity:</h4>
+                                    <form action="{{route('user_reservation_add',['id'=>$data->id])}}" method="post">
+                                        @csrf
+                                        <div>
+
+                                            <label for="start_date">Start Date:</label>
+                                            <input type="date" id="start_date" name="start_date"><br/>
+                                            <label for="end_date">end Date:</label>
+                                            <input type="date" id="end_date" name="end_date">
+
+                                        </div>
                                         <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
+
+                                            <input type="text" id="person" name="person" value="1">
+
                                         </div>
-                                    </div>
-                                    <div class="p-size">
-                                        <h4>Size:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn">S</button>
-                                            <button type="button" class="btn">M</button>
-                                            <button type="button" class="btn">L</button>
-                                            <button type="button" class="btn">XL</button>
+                                        <!--<div class="p-size">
+                                            <h4>Size:</h4>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn">S</button>
+                                                <button type="button" class="btn">M</button>
+                                                <button type="button" class="btn">L</button>
+                                                <button type="button" class="btn">XL</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="p-color">
-                                        <h4>Color:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn">White</button>
-                                            <button type="button" class="btn">Black</button>
-                                            <button type="button" class="btn">Blue</button>
+                                        <div class="p-color">
+                                            <h4>Color:</h4>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn">White</button>
+                                                <button type="button" class="btn">Black</button>
+                                                <button type="button" class="btn">Blue</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    -->
-                                    <div class="action">
-                                        <a class="btn" href="{{route('addtocart',['id'=>$data->id])}}"><i
-                                                class="fa fa-shopping-cart"></i>Add to Cart</a>
-                                        <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
-                                    </div>
+                                        -->
+
+                                        <div class="action">
+                                            <button type="submit" class="primary-btn add-to-cart"><i
+                                                    class="fa fa-shopping-cart">Book Now</i>
+                                            </button>
+                                            <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +111,8 @@
                                     <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#reviews">Reviews({{$reviews->count()}})</a>
+                                    <a class="nav-link" data-toggle="pill" href="#reviews">Reviews({{$reviews->count()}}
+                                        )</a>
                                 </li>
                             </ul>
 
@@ -125,10 +137,9 @@
                                 </div>
 
 
-
-                                    <div id="reviews" class="container tab-pane fade">
-                                        <div class="reviews-submitted">
-                                            @foreach($reviews as $rs)
+                                <div id="reviews" class="container tab-pane fade">
+                                    <div class="reviews-submitted">
+                                        @foreach($reviews as $rs)
                                             <div class="reviewer">{{$rs->user->name}} - <span>{{$rs->created_at}}</span>
                                             </div>
                                             <div class="ratting">
@@ -142,56 +153,56 @@
                                             <p>
                                                 {{$rs->review}}
                                             </p>
-                                            @endforeach
+                                        @endforeach
+                                    </div>
+
+
+                                    <form class="reviews-submit" action="{{route('storecomment')}}" method="post">
+                                        @csrf
+                                        <h4>Give your Review:</h4>
+                                        <div class="ratting">
+                                            <i class="far fa-star">
+                                                <input type="radio" id="star5" name="rate" value="5"
+                                                >
+                                            </i>
+                                            <i class="far fa-star"> <input type="radio" id="star4" name="rate"
+                                                                           value="4"
+                                                ></i>
+                                            <i class="far fa-star"> <input type="radio" id="star3" name="rate"
+                                                                           value="3"
+                                                ></i>
+                                            <i class="far fa-star"> <input type="radio" id="star2" name="rate"
+                                                                           value="2"
+                                                ></i>
+                                            <i class="far fa-star"> <input type="radio" id="star1" name="rate"
+                                                                           value="1"
+                                                ></i>
                                         </div>
-
-
-                                        <form class="reviews-submit" action="{{route('storecomment')}}" method="post">
-                                            @csrf
-                                            <h4>Give your Review:</h4>
-                                            <div class="ratting">
-                                                <i class="far fa-star">
-                                                    <input type="radio" id="star5" name="rate" value="5"
-                                                    >
-                                                </i>
-                                                <i class="far fa-star"> <input type="radio" id="star4" name="rate"
-                                                                               value="4"
-                                                    ></i>
-                                                <i class="far fa-star"> <input type="radio" id="star3" name="rate"
-                                                                               value="3"
-                                                    ></i>
-                                                <i class="far fa-star"> <input type="radio" id="star2" name="rate"
-                                                                               value="2"
-                                                    ></i>
-                                                <i class="far fa-star"> <input type="radio" id="star1" name="rate"
-                                                                               value="1"
-                                                    ></i>
+                                        <div class="row form">
+                                            <input class="input" type="hidden" placeholder="package_id"
+                                                   name="package_id"
+                                                   value="{{$data->id}}">
+                                            <input class="input" type="hidden" placeholder="slug" name="slug"
+                                                   value="{{$data->slug}}">
+                                            <div class="col-sm-6">
+                                                <input class="input" type="text" placeholder="subject"
+                                                       name="subject">
                                             </div>
-                                            <div class="row form">
-                                                <input class="input" type="hidden" placeholder="package_id"
-                                                       name="package_id"
-                                                       value="{{$data->id}}">
-                                                <input class="input" type="hidden" placeholder="slug" name="slug"
-                                                       value="{{$data->slug}}">
-                                                <div class="col-sm-6">
-                                                    <input class="input" type="text" placeholder="subject"
-                                                           name="subject">
-                                                </div>
 
-                                                <div class="col-sm-12">
+                                            <div class="col-sm-12">
                                                     <textarea class="input" name="review"
                                                               placeholder="Review"></textarea>
-                                                </div>
-                                                @auth()
-                                                    <div class="col-sm-12">
-                                                        <button>Submit</button>
-                                                    </div>
-                                                @endauth
                                             </div>
-                                        </form>
+                                            @auth()
+                                                <div class="col-sm-12">
+                                                    <button>Submit</button>
+                                                </div>
+                                            @endauth
+                                        </div>
+                                    </form>
 
 
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

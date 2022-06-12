@@ -2,7 +2,7 @@
 <div class="recent-product product">
     <div class="container-fluid">
         <div class="section-header">
-            <h1>Recent Product</h1>
+            <h1>Recent packages</h1>
         </div>
         <div class="row align-items-center product-slider product-slider-3">
             <?php $__currentLoopData = $last; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -24,15 +24,13 @@
                                      alt="">
                             </a>
                             <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
                                 <a href="#"><i class="fa fa-heart"></i></a>
                                 <a href="<?php echo e(route('package',['id'=>$rs->id,'slug'=>$rs->slug])); ?>"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
                         <div class="product-price">
                             <h3><span>$</span><?php echo e($rs->price); ?></h3>
-                            <a class="btn" href="<?php echo e(route('addtocart',['id'=>$rs->id])); ?>"><i
-                                    class="fa fa-shopping-cart"></i>Buy Now</a>
+                          
                         </div>
                     </div>
                 </div>

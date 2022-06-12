@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
 
@@ -37,12 +39,19 @@ Route::middleware('auth')->prefix('user')->namespace('myaccount')->group(functio
         Route::get('delete/{id}', [\App\Http\Controllers\PackageController::class, 'destroy'])->name('user_package_delete');
         Route::get('show', [\App\Http\Controllers\PackageController::class, 'show'])->name('user_package_show');
     });
+    #Reservation
+    Route::prefix('reservation')->group(function () {
+        Route::get('/', [ReservationController::class, 'index'])->name('user_reservation');
+        Route::post('store/{id}', [ReservationController::class, 'store'])->name('user_reservation_add');
+        Route::post('update/{id}', [ReservationController::class, 'update'])->name('user_reservation_update');
+        Route::get('delete/{id}', [ReservationController::class, 'destroy'])->name('user_reservation_delete');
+    });
     #package Image
     Route::prefix('image')->group(function () {
-        Route::get('create/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('user_image_add');
-        Route::post('store/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('user_image_store');
-        Route::get('delete/{id}/{package_id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('user_image_delete');
-        Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('user_image_show');
+        Route::get('create/{package_id}', [ImageController::class, 'create'])->name('user_image_add');
+        Route::post('store/{package_id}', [ImageController::class, 'store'])->name('user_image_store');
+        Route::get('delete/{id}/{package_id}', [ImageController::class, 'destroy'])->name('user_image_delete');
+        Route::get('show', [ImageController::class, 'show'])->name('user_image_show');
 
     });
 });
@@ -147,7 +156,6 @@ Route::post('/getpackage', [HomeController::class, 'getpackage'])->name('getpack
 Route::get('/packagelist/{search}', [HomeController::class, 'packagelist'])->name('packagelist');
 Route::post('/storecomment}', [HomeController::class, 'storecomment'])->name('storecomment');
 
-Route::get('/addtocart/{id}', [HomeController::class, 'index'])->name('addtocart');
 
 
 

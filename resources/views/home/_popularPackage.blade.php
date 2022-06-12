@@ -24,15 +24,13 @@
                                      alt="">
                             </a>
                             <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
                                 <a href="#"><i class="fa fa-heart"></i></a>
                                 <a href="#"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
                         <div class="product-price">
                             <h3><span>$</span>{{$rs->price}}</h3>
-                            <a class="btn" href="{{route('addtocart',['id'=>$rs->id])}}"><i
-                                    class="fa fa-shopping-cart"></i>Buy Now</a>
+
                         </div>
                     </div>
                 </div>

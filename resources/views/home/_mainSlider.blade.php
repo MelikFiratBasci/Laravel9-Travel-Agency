@@ -8,10 +8,12 @@
                     @foreach($slider as $rs)
                     <div class="header-slider-item">
                         <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" syle="height 400px" alt="Slider Image"/>
+                        <a class="btn" href="{{route('package',['id'=>$rs->id,'slug'=>$rs->slug])}}">
                         <div class="header-slider-caption">
                             <p>{{$rs->title}}</p>
-                            <a class="btn" href="{{route('package',['id'=>$rs->id,'slug'=>$rs->slug])}}"><i class="fa fa-shopping-cart"></i>{{$rs->price}}</a>
+                           <i class="fa fa-shopping-cart"></i>{{$rs->price}}
                         </div>
+                        </a>
                     </div>
                     @endforeach
 

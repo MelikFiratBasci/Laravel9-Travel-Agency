@@ -17,6 +17,7 @@
                     </form>
                     @livewireScripts
                 </div>
+@include('home.messages')
             </div>
             <div class="col-md-3">
                 <div class="user">
@@ -24,7 +25,7 @@
                         <i class="fa fa-heart"></i>
                         <span>(0)</span>
                     </a>
-                    <a href="cart.html" class="btn cart">
+                    <a href="{{route('user_reservation')}}" class="btn cart">
                         <i class="fa fa-shopping-cart"></i>
                         <span>(0)</span>
                     </a>
